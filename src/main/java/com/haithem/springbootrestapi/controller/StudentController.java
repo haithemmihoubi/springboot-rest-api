@@ -36,7 +36,7 @@ public class StudentController {
     public Student studentRequestVauable(@RequestParam int id) {
         return new Student(id, "ral", "tets");
     }
- // create Student 2001 cretain
+ // create Student 201 created
     @PostMapping("/student/create")
     @ResponseStatus(HttpStatus.CREATED)
     public  Student createStudeny(@RequestBody Student student) {
@@ -46,7 +46,7 @@ public class StudentController {
         return  student ;
     }
 
-// hande post request in spring boot updating  existing resource
+// handle post request in spring boot updating  existing resource
     @PutMapping("/students/{id}/update")
     public Student updateStudent(@RequestBody Student student,@PathVariable("id")  int studentId) {
         System.out.println(student.getLastName());
@@ -55,5 +55,16 @@ public class StudentController {
 
     }
 
+ // deleting the existing resource
+    @DeleteMapping("student/delete/{id}")
+    public  String deleteStudent( @PathVariable String id) {
+        System.out.println(id);
+         return  "student deleted successfully with  ***"+id ;
+    }
 
+
+    @GetMapping("/auto")
+    public String hell() {
+        return  "hell" ;
+    }
 }
